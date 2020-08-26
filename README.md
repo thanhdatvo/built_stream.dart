@@ -48,7 +48,7 @@ class name which is something that can't be automated.
 ## Common Usage
 
 While full, compiled examples are available in
-[`example/lib`](https://github.com/google/built_value.dart/tree/master/example/lib),
+[`example/lib`](https://github.com/vo9312/built_stream.dart/tree/master/example/lib),
 a common usage example is shown here. This example assumes that you are writing
 a client for method that login to the system in AuthRepository:
 
