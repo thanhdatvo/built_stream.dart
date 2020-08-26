@@ -4,10 +4,10 @@
 
 Built Stream provides:
 
-- Concrete params and results type for the method;
-- SingleStream class wraps an asynchronous method;
-- ComposedStreams class wrap SingleStream objects;
-- A graceful error handler;
+- Concrete params and results type for the method
+- SingleStream class wraps an asynchronous method
+- ComposedStreams class wrap SingleStream objects
+- A graceful error handler
 
 
 <!-- See the [API docs](https://pub.dev/documentation/built_value/latest/built_value/built_value-library.html). -->
@@ -37,7 +37,7 @@ class $CAPITALIZED_METHOD$Stream extends _$CAPITALIZED_METHOD$StreamOrigin {
 class $CAPITALIZED_METHOD$Stream extends _$CAPITALIZED_METHOD$StreamOrigin {
   @override
   Stream<StreamState> process(_) async* {
-
+    // your logic code here
   }
 }
 ```
