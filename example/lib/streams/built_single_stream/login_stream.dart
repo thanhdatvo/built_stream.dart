@@ -1,4 +1,3 @@
-import 'package:example/modal/user_profile.dart';
 import 'package:example/repositories/auth_repository.dart';
 import 'package:built_stream/built_stream.dart';
 import 'dart:async';
