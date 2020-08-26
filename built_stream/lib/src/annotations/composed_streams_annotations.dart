@@ -1,9 +1,9 @@
 /// A multi streams handler that cover many stream
 ///
-/// [ComposedStreams.streams] list all of the stream class to generate. 
-/// 
+/// [ComposedStreams.streams] list all of the stream class to generate.
+///
 /// You can use ComposedStreams like this:
-/// 
+///
 /// ```
 /// @ComposedStreams(const [
 ///  LoginStream,
@@ -15,9 +15,9 @@
 ///  }
 ///}
 /// ```
-/// 
+///
 /// to generate
-/// 
+///
 /// ```
 /// class StartAppError extends StreamError {
 ///   StartAppError(StreamError streamError, ErrorLocation location)

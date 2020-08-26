@@ -3,6 +3,14 @@ import 'package:built_stream_generator/src/property.dart';
 import 'package:built_stream_generator/src/utils/string_utils.dart';
 import 'package:meta/meta.dart';
 
+/// A commom writer to indicate the content to generate
+///
+/// The content generated here includes:
+/// 1. [ActionParams] class
+/// 2. [ActionResults] class
+/// 3. [ActionStart] class
+/// 4. [ActionSucceed] class
+/// 5. [ActionBloc] class
 abstract class Writer {
   @protected
   List<DartObject> annotations;
@@ -18,17 +26,17 @@ abstract class Writer {
   List<Property> optionalResults = [];
 
   @protected
-  bool get hasParams => params.length > 0 || optionalParams.length > 0;
+  bool get hasParams => params.isNotEmpty || optionalParams.isNotEmpty;
   @protected
-  bool get hasResults => results.length > 0 || optionalResults.length > 0;
-  
+  bool get hasResults => results.isNotEmpty || optionalResults.isNotEmpty;
+
   Writer(this.action, this.annotations) {
     annotations.forEach((value) {
-      if (value.type.displayName == 'StreamParam') {
+      if (value.type.getDisplayString() == 'StreamParam') {
         _initParams(value);
       }
 
-      if (value.type.displayName == 'StreamResult') {
+      if (value.type.getDisplayString() == 'StreamResult') {
         _initResults(value);
       }
     });
@@ -91,8 +99,8 @@ abstract class Writer {
       String paramParams =
           params.map((property) => 'this.' + property.name).join(', ');
       String optionalParamsStr = '';
-      if (optionalParams.length > 0) {
-        optionalParamsStr += paramParams.length > 0 ? ', ' : '';
+      if (optionalParams.isNotEmpty) {
+        optionalParamsStr += paramParams.isNotEmpty ? ', ' : '';
         optionalParamsStr +=
             '{${optionalParams.map((property) => 'this.' + property.name).join(', ')}}';
       }
@@ -113,8 +121,8 @@ abstract class Writer {
       String resultParams =
           results.map((property) => 'this.' + property.name).join(', ');
       String optionalResultsStr = '';
-      if (optionalResults.length > 0) {
-        optionalResultsStr += resultParams.length > 0 ? ', ' : '';
+      if (optionalResults.isNotEmpty) {
+        optionalResultsStr += resultParams.isNotEmpty ? ', ' : '';
         optionalResultsStr +=
             '{${optionalResults.map((property) => 'this.' + property.name).join(', ')}}';
       }

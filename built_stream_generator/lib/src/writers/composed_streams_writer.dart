@@ -2,6 +2,12 @@ import 'package:analyzer/dart/constant/value.dart';
 import 'package:built_stream_generator/src/utils/string_utils.dart';
 import 'package:built_stream_generator/src/writers/writer.dart';
 
+/// A single stream writer that inherate the writer class
+/// to indicate the content to generate ComposedStreams classes
+///
+/// The content generated here includes:
+/// 1. [ActionStream] class
+/// 2. [ActionError] class
 class ComposedStreamsWriter extends Writer {
   ComposedStreamsWriter(String action, List<DartObject> annotations)
       : super(action, annotations);

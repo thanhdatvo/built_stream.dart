@@ -1,3 +1,5 @@
+/// A util class that help transform a string
+///
 class StringUtils {
   static final StringUtils _instance = StringUtils._();
   StringUtils._();

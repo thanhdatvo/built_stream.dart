@@ -3,6 +3,12 @@ import 'package:built_stream_generator/src/property.dart';
 import 'package:built_stream_generator/src/utils/string_utils.dart';
 import 'package:built_stream_generator/src/writers/writer.dart';
 
+/// A single stream writer that inherate the writer class
+/// to indicate the content to generate SingleStream classes
+///
+/// The content generated here includes:
+/// 1. [ActionStream] class
+/// 2. [ActionError] class
 class SingleStreamWriter extends Writer {
   SingleStreamWriter(String action, List<DartObject> annotations)
       : super(action, annotations);
@@ -29,7 +35,7 @@ class SingleStreamWriter extends Writer {
         ' Stream<StreamState> process(${paramsTypeString} params) async* {'
         '   try {'
         '     yield const ${action}Start();'
-        '     ${hasResults ? '${action}Results results =' : '' }await ${executor.name}.$method(${hasParams ? 'params' : ''});'
+        '     ${hasResults ? '${action}Results results =' : ''}await ${executor.name}.$method(${hasParams ? 'params' : ''});'
         '     yield ${action}Succeed(${hasResults ? 'results' : ''});'
         '   } catch (error) {'
         '     ErrorLocation location = ErrorLocation(this.runtimeType, errorMessage);'
