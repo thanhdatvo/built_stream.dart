@@ -32,11 +32,11 @@ abstract class Writer {
 
   Writer(this.action, this.annotations) {
     annotations.forEach((value) {
-      if (value.type.getDisplayString() == 'StreamParam') {
+      if (value.type.displayName == 'StreamParam') {
         _initParams(value);
       }
 
-      if (value.type.getDisplayString() == 'StreamResult') {
+      if (value.type.displayName == 'StreamResult') {
         _initResults(value);
       }
     });
@@ -170,7 +170,7 @@ abstract class Writer {
   void _writeBloc(StringBuffer result) {
     final renamedClassName = StringUtils().capitalizeOnlyFirstLetter(action);
 
-    result.writeln('class ${action}Bloc implements Disposable{'
+    result.writeln('class ${action}Bloc implements StreamBloc{'
         ' ${action}Stream _${renamedClassName}Stream;'
         ' ConvertSubject<${paramsTypeString}, StreamState> ${renamedClassName}Subject;'
         ' ${action}Bloc() {'

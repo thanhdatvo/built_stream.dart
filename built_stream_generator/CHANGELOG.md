@@ -1,3 +1,9 @@
+## 1.0.19
+
+* Update bloc writer to create class that implements `StreamBloc` instead of `Disposable` 
+corresponding built_stream v1.0.13
+* Degrade meta library version to ^1.1.8
+
 ## 1.0.15+16+17+18
 
 * Update dependencies

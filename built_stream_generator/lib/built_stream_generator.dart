@@ -20,14 +20,14 @@ class BuiltStreamGenerator extends Generator {
             .toList();
 
         final annotation = annotations.firstWhere((element) =>
-            element.type.getDisplayString() == "SingleStream" ||
-            element.type.getDisplayString() == "ComposedStreams");
+            element.type.displayName == "SingleStream" ||
+            element.type.displayName == "ComposedStreams");
 
         if (annotation == null) {
           throw "There must be one writer annotation";
-        } else if (annotation.type.getDisplayString() == "SingleStream") {
+        } else if (annotation.type.displayName == "SingleStream") {
           SingleStreamWriter(action, annotations).write(result, annotation);
-        } else if (annotation.type.getDisplayString() == "ComposedStreams") {
+        } else if (annotation.type.displayName == "ComposedStreams") {
           ComposedStreamsWriter(action, annotations).write(result, annotation);
         }
       }
