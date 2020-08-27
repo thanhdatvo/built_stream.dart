@@ -1,6 +1,7 @@
 import 'package:example/streams/built_composed_streams/start_app_stream.dart';
 import 'package:flutter/material.dart';
-import 'package:built_stream/built_stream.dart';
+import 'package:built_stream/stream_annotations.dart';
+import 'package:built_stream/stream_types.dart';
 
 void main() => runApp(MyApp());
 

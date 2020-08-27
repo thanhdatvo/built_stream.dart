@@ -2,7 +2,9 @@ import 'dart:async';
 import 'package:example/streams/built_single_stream/notify_user_session_to_server_stream.dart';
 import 'package:rxdart/rxdart.dart';
 
-import 'package:built_stream/built_stream.dart';
+import 'package:built_stream/stream_annotations.dart';
+import 'package:built_stream/stream_types.dart';
+
 import 'package:example/streams/built_single_stream/load_user_email_from_sqlite_stream.dart';
 import 'package:example/streams/built_single_stream/load_user_language_from_server_stream.dart';
 import 'package:example/streams/built_single_stream/load_user_profile_from_server_stream.dart';

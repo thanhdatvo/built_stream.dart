@@ -1,5 +1,6 @@
 import 'package:example/modal/user_profile.dart';
-import 'package:built_stream/built_stream.dart';
+import 'package:built_stream/stream_annotations.dart';
+import 'package:built_stream/stream_types.dart';
 import 'dart:async';
 import 'package:customized_streams/customized_streams.dart';
 import 'package:example/repositories/user_repository.dart';

@@ -1,6 +1,20 @@
-## 1.0.8+9
+## 1.0.14
 
-* Add example
+* Degrade meta library version to ^1.1.8
+
+## 1.0.13
+
+* Remove StreamResult and StreamParams interfaces
+* Change Disposal interface to  StreamBloc interface
+* Update documents
+  
+## 1.0.11+12
+
+* Reconstruct project
+  
+## 1.0.8+9+10
+
+* Add example + documents
   
 ## 1.0.7
 

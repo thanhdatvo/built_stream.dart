@@ -11,6 +11,7 @@ dependencies:
   # built_stream: ^1.0.4
 
 dev_dependencies:
+  analyzer: ">=0.34.0 <=0.40.0"
   build_runner: 1.7.2
   flutter_test:
     sdk: flutter

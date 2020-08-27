@@ -11,3 +11,5 @@
 **/.packages
 
 *.g.dart
+
+**/doc

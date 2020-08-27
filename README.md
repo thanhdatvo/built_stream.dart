@@ -66,7 +66,8 @@ The corresponding SingleStream for the method login inside class AuthRepository 
 
 ```dart
 import 'package:example/repositories/auth_repository.dart';
-import 'package:built_stream/built_stream.dart';
+import 'package:built_stream/stream_annotations.dart';
+import 'package:built_stream/stream_types.dart';
 import 'dart:async';
 import 'package:customized_streams/customized_streams.dart';
 
