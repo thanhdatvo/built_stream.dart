@@ -1,3 +1,8 @@
+## 1.0.15
+
+* switch type of propertyType of StreamResult and StreamParam from `Type` to `String`
+because that Dart currently does not support generic runtime type like `List<int>`
+  
 ## 1.0.14
 
 * Degrade meta library version to ^1.1.8

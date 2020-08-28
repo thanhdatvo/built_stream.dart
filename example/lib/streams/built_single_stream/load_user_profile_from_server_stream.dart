@@ -8,8 +8,8 @@ import 'package:example/repositories/user_repository.dart';
 part "load_user_profile_from_server_stream.g.dart";
 
 @SingleStream(UserRepository, 'loadUserProfileFromServer')
-@StreamParam(String, 'token')
-@StreamResult(UserProfile, 'userProfile')
+@StreamParam('String', 'token')
+@StreamResult('UserProfile', 'userProfile')
 class LoadUserProfileFromServerStream extends _LoadUserProfileFromServerStreamOrigin {
   @override
   String get errorMessage => 'Cannot load user profile from server';

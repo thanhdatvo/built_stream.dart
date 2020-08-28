@@ -7,7 +7,7 @@ import 'package:example/repositories/user_repository.dart';
 part "load_user_email_from_sqlite_stream.g.dart";
 
 @SingleStream(UserRepository, 'loadUserEmailFromSQLite')
-@StreamResult(String, 'email')
+@StreamResult('String', 'email')
 class LoadUserEmailFromSQLiteStream
     extends _LoadUserEmailFromSQLiteStreamOrigin {
   @override

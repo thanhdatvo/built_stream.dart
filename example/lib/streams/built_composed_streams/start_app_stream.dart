@@ -20,7 +20,7 @@ part "start_app_stream.g.dart";
   LoadUserProfileFromServerStream,
   NotifyUserSessionToServerStream
 ])
-@StreamResult(String, 'token')
+@StreamResult('String', 'token')
 class StartAppStream extends _StartAppStreamOrigin {
   @override
   Stream<StreamState> process(_) async* {
@@ -62,7 +62,7 @@ class StartAppStream extends _StartAppStreamOrigin {
       _notifyUserSessionToServerStream
           .process(NotifyUserSessionToServerParams(token)),
     ]);
-    
+
     await for (StreamState state in combinedStream) {
       if (state is StateError) {
         yield StartAppError(state, errorLocation);

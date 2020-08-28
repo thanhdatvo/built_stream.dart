@@ -7,8 +7,8 @@ import 'package:example/repositories/user_repository.dart';
 part "load_user_language_from_server_stream.g.dart";
 
 @SingleStream(UserRepository, 'loadUserLanguageFromServer')
-@StreamParam(String, 'token')
-@StreamResult(String, 'language')
+@StreamParam('String', 'token')
+@StreamResult('String', 'language')
 class LoadUserLanguageFromServerStream
     extends _LoadUserLanguageFromServerStreamOrigin {
   @override

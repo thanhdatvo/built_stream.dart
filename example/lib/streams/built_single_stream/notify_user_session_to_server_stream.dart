@@ -7,7 +7,7 @@ import 'package:example/repositories/user_repository.dart';
 part "notify_user_session_to_server_stream.g.dart";
 
 @SingleStream(UserRepository, 'notifyUserSessionToServer')
-@StreamParam(String, 'token')
+@StreamParam('String', 'token')
 class NotifyUserSessionToServerStream
     extends _NotifyUserSessionToServerStreamOrigin {
   @override

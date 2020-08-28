@@ -36,7 +36,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void _handleStartApp() {
-    _startAppBloc.startAppSubject.input = EmptyParams();
+    _startAppBloc.startAppSubject.add(EmptyParams());
   }
 
   @override

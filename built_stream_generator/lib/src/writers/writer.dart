@@ -42,8 +42,7 @@ abstract class Writer {
     });
   }
   void _initParams(DartObject value) {
-    Property property = Property(
-        value.getField('propertyType').toTypeValue().toString(),
+    Property property = Property(value.getField('propertyType').toStringValue(),
         value.getField('propertyName').toStringValue());
     dynamic optionalField = value.getField('optional');
     bool optional;
@@ -59,8 +58,7 @@ abstract class Writer {
   }
 
   void _initResults(DartObject value) {
-    Property property = Property(
-        value.getField('propertyType').toTypeValue().toString(),
+    Property property = Property(value.getField('propertyType').toStringValue(),
         value.getField('propertyName').toStringValue());
 
     dynamic optionalField = value.getField('optional');
@@ -172,10 +170,10 @@ abstract class Writer {
 
     result.writeln('class ${action}Bloc implements StreamBloc{'
         ' ${action}Stream _${renamedClassName}Stream;'
-        ' ConvertSubject<${paramsTypeString}, StreamState> ${renamedClassName}Subject;'
+        ' TransformerSubject<${paramsTypeString}, StreamState> ${renamedClassName}Subject;'
         ' ${action}Bloc() {'
         '   _${renamedClassName}Stream = ${action}Stream();'
-        '   ${renamedClassName}Subject = ConvertSubject<${paramsTypeString}, StreamState>(_${renamedClassName}Stream.process);'
+        '   ${renamedClassName}Subject = TransformerSubject<${paramsTypeString}, StreamState>(_${renamedClassName}Stream.process);'
         ' }'
         ' @override'
         ' dispose() => ${renamedClassName}Subject.dispose();'

@@ -30,6 +30,6 @@
 /// }
 /// ```
 class ComposedStreams {
-  final List<Type> streams;
+  final List<String> streams;
   const ComposedStreams(this.streams);
 }

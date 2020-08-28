@@ -33,7 +33,7 @@ library stream_annotations;
 ///}
 /// ```
 class StreamParam {
-  final Type propertyType;
+  final String propertyType;
   final String propertyName;
   final bool optional;
   const StreamParam(this.propertyType, this.propertyName,
@@ -73,7 +73,7 @@ class StreamParam {
 ///}
 /// ```
 class StreamResult {
-  final Type propertyType;
+  final String propertyType;
   final String propertyName;
   final bool optional;
   const StreamResult(this.propertyType, this.propertyName,

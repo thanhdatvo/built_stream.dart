@@ -2,7 +2,7 @@ name: built_stream_generator
 description: >
   Provide built stream for Dart
   This library is the dev dependency.
-version: 1.0.19
+version: 1.0.23
 homepage: https://github.com/vo9312/built_stream.dart
 
 environment:
@@ -15,7 +15,7 @@ dependencies:
   source_gen: ^0.9.0
   built_stream: ^1.0.7
   meta: ^1.1.8
-
+  customized_streams: ^1.0.16
 dev_dependencies:
   test: ^1.0.0
 
