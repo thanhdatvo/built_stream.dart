@@ -1,3 +1,15 @@
+## 1.0.26
+
+* remove `isLoading` in generated classes that extend `StreamState` 
+  
+## 1.0.25
+
+* update type `Error` to `dynamic` in SingleStreamError and ComposedStreamsError class
+  
+## 1.0.24
+
+* update StartAppError constructor: now there are 2 name constructors 
+  
 ## 1.0.23
 
 * update document

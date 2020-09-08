@@ -48,7 +48,7 @@ class SingleStreamWriter extends Writer {
   @override
   void writeStreamError(StringBuffer result) {
     result.writeln('class ${action}Error extends StreamError {'
-        ' ${action}Error(ErrorLocation location, Error error, payload)'
+        ' ${action}Error(ErrorLocation location, dynamic error, dynamic payload)'
         '     : super.init(location, error, payload);'
         '}');
   }

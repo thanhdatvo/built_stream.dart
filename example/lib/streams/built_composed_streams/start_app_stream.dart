@@ -32,7 +32,7 @@ class StartAppStream extends _StartAppStreamOrigin {
     await for (StreamState state
         in _loadUserEmailFromSQLiteStream.process(const EmptyParams())) {
       if (state is LoadUserEmailFromSQLiteError) {
-        yield StartAppError(state, errorLocation);
+        yield StartAppError.composeLocation(state, errorLocation);
         return;
       }
       if (state is LoadUserEmailFromSQLiteSucceed) {
@@ -45,7 +45,7 @@ class StartAppStream extends _StartAppStreamOrigin {
     LoginParams loginParams = LoginParams(email, password: "password");
     await for (StreamState state in _loginStream.process(loginParams)) {
       if (state is LoginError) {
-        yield StartAppError(state, errorLocation);
+        yield StartAppError.composeLocation(state, errorLocation);
         return;
       }
       if (state is LoginSucceed) {
@@ -65,7 +65,7 @@ class StartAppStream extends _StartAppStreamOrigin {
 
     await for (StreamState state in combinedStream) {
       if (state is StateError) {
-        yield StartAppError(state, errorLocation);
+        yield StartAppError.composeLocation(state, errorLocation);
         return;
       }
       yield state;

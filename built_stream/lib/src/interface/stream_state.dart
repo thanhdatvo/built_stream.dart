@@ -1,4 +1,7 @@
 abstract class StreamState {
-  bool get isLoading;
   const StreamState();
+  @override
+  String toString() {
+    return runtimeType.toString();
+  }
 }

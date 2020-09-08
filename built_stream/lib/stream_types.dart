@@ -5,7 +5,6 @@ import 'package:meta/meta.dart';
 /// Interface for generated state classes
 ///
 abstract class StreamState {
-  bool get isLoading;
   const StreamState();
 }
 
@@ -73,7 +72,4 @@ class StreamError implements StreamState {
     result += "--- END ERROR INFO ---\n";
     return result;
   }
-
-  @override
-  bool get isLoading => false;
 }

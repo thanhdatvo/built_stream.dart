@@ -40,8 +40,10 @@ class ComposedStreamsWriter extends Writer {
   @override
   void writeStreamError(StringBuffer result) {
     result.writeln('class ${action}Error extends StreamError {'
-        ' ${action}Error(StreamError streamError, ErrorLocation location)'
+        ' ${action}Error.composeLocation(StreamError streamError, ErrorLocation location)'
         '     : super.composeLocation(streamError, location);'
+        ' ${action}Error.init(ErrorLocation location, dynamic error, dynamic payload)'
+        '     : super.init(location, error, payload);'
         '}');
   }
 }

@@ -132,21 +132,15 @@ abstract class Writer {
 
   void _writeState(StringBuffer result) {
     result.writeln('class ${action}Start implements StreamState {'
-        ' @override'
-        ' bool get isLoading => true;'
         ' const ${action}Start();'
         '}');
     if (hasResults) {
       result.writeln('class ${action}Succeed implements StreamState {'
-          ' @override'
-          ' bool get isLoading => false;'
           ' final ${action}Results results;'
           ' const ${action}Succeed(this.results);'
           '}');
     } else {
       result.writeln('class ${action}Succeed implements StreamState {'
-          ' @override'
-          ' bool get isLoading => false;'
           ' const ${action}Succeed();'
           '}');
     }

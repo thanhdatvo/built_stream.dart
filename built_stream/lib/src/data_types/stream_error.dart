@@ -19,12 +19,12 @@ class StreamError implements StreamState {
       .._payload = streamError.payload;
   }
 
-  Error _error;
+  dynamic _error;
   dynamic _payload;
   List<ErrorLocation> _locations;
 
   dynamic get payload => _payload;
-  Error get error => _error;
+  dynamic get error => _error;
   List<ErrorLocation> get locations => _locations;
 
   @override
@@ -38,7 +38,4 @@ class StreamError implements StreamState {
     result += "--- END ERROR INFO ---\n";
     return result;
   }
-
-  @override
-  bool get isLoading => false;
 }

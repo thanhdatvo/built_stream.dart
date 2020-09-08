@@ -1,3 +1,13 @@
+## 1.0.17
+
+* remove `isLoading` in `StreamState`
+* add `toString()` in `StreamState`
+
+## 1.0.16
+
+* update type of error property in  StreamError from `Error` to `dynamic` because
+not all of errors is subtype of `Error`
+
 ## 1.0.15
 
 * switch type of propertyType of StreamResult and StreamParam from `Type` to `String`
