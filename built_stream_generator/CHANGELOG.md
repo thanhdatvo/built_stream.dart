@@ -1,3 +1,11 @@
+## 1.0.28
+
+* fix: only add parallel mode and only newest call allowance mode to single stream
+  
+## 1.0.27
+
+* add parallel mode and only newest call allowance mode 
+  
 ## 1.0.26
 
 * remove `isLoading` in generated classes that extend `StreamState` 

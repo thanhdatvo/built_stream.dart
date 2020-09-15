@@ -1,3 +1,7 @@
+## 1.0.18
+
+* change type of property error in `StreamError` from `Error` to `dynamic`
+  
 ## 1.0.17
 
 * remove `isLoading` in `StreamState`

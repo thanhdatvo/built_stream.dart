@@ -46,4 +46,20 @@ class ComposedStreamsWriter extends Writer {
         '     : super.init(location, error, payload);'
         '}');
   }
+
+  @override
+  void writeBloc(StringBuffer result) {
+    final renamedClassName = StringUtils().capitalizeOnlyFirstLetter(action);
+
+    result.writeln('class ${action}Bloc implements StreamBloc{'
+        ' ${action}Stream _${renamedClassName}Stream;'
+        ' TransformerSubject<${paramsTypeString}, StreamState> ${renamedClassName}Subject;'
+        ' ${action}Bloc() {'
+        '   _${renamedClassName}Stream = ${action}Stream();'
+        '   ${renamedClassName}Subject = TransformerSubject<${paramsTypeString}, StreamState>(_${renamedClassName}Stream.process);'
+        ' }'
+        ' @override'
+        ' dispose() => ${renamedClassName}Subject.dispose();'
+        '}');
+  }
 }

@@ -79,28 +79,30 @@ abstract class Writer {
     _writeResult(result);
     _writeState(result);
     writeStream(result, annotation);
-    _writeBloc(result);
+    writeBloc(result);
   }
 
   @protected
   void writeStream(StringBuffer result, DartObject annotation);
+  @protected
+  void writeBloc(StringBuffer result);
 
   void _writeParam(StringBuffer result) {
     if (hasParams) {
       result.writeln('class ${action}Params {');
       params.forEach((Property property) {
-        result.writeln('final $property;');
+        result.writeln('final ${property.publicDeclaration};');
       });
       optionalParams.forEach((Property property) {
-        result.writeln('final $property;');
+        result.writeln('final ${property.publicDeclaration};');
       });
       String paramParams =
-          params.map((property) => 'this.' + property.name).join(', ');
+          params.map((property) => 'this.' + property.publicName).join(', ');
       String optionalParamsStr = '';
       if (optionalParams.isNotEmpty) {
         optionalParamsStr += paramParams.isNotEmpty ? ', ' : '';
         optionalParamsStr +=
-            '{${optionalParams.map((property) => 'this.' + property.name).join(', ')}}';
+            '{${optionalParams.map((property) => 'this.' + property.publicName).join(', ')}}';
       }
       result.writeln(' const ${action}Params($paramParams$optionalParamsStr);');
       result.writeln('}');
@@ -111,18 +113,18 @@ abstract class Writer {
     if (hasResults) {
       result.writeln('class ${action}Results {');
       results.forEach((Property property) {
-        result.writeln('final $property;');
+        result.writeln('final ${property.publicDeclaration};');
       });
       optionalResults.forEach((Property property) {
-        result.writeln('final $property;');
+        result.writeln('final ${property.publicDeclaration};');
       });
       String resultParams =
-          results.map((property) => 'this.' + property.name).join(', ');
+          results.map((property) => 'this.' + property.publicName).join(', ');
       String optionalResultsStr = '';
       if (optionalResults.isNotEmpty) {
         optionalResultsStr += resultParams.isNotEmpty ? ', ' : '';
         optionalResultsStr +=
-            '{${optionalResults.map((property) => 'this.' + property.name).join(', ')}}';
+            '{${optionalResults.map((property) => 'this.' + property.publicName).join(', ')}}';
       }
       result.writeln(
           ' const ${action}Results($resultParams$optionalResultsStr);');
@@ -157,20 +159,5 @@ abstract class Writer {
     } else {
       return 'EmptyParams';
     }
-  }
-
-  void _writeBloc(StringBuffer result) {
-    final renamedClassName = StringUtils().capitalizeOnlyFirstLetter(action);
-
-    result.writeln('class ${action}Bloc implements StreamBloc{'
-        ' ${action}Stream _${renamedClassName}Stream;'
-        ' TransformerSubject<${paramsTypeString}, StreamState> ${renamedClassName}Subject;'
-        ' ${action}Bloc() {'
-        '   _${renamedClassName}Stream = ${action}Stream();'
-        '   ${renamedClassName}Subject = TransformerSubject<${paramsTypeString}, StreamState>(_${renamedClassName}Stream.process);'
-        ' }'
-        ' @override'
-        ' dispose() => ${renamedClassName}Subject.dispose();'
-        '}');
   }
 }

@@ -2,7 +2,7 @@ name: built_stream
 description:  >
   Provide built stream for Dart 
   This library is the runtime dependency.
-version: 1.0.17
+version: 1.0.18
 homepage: https://github.com/vo9312/built_stream.dart
 
 environment:

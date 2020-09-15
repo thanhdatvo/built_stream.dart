@@ -31,11 +31,22 @@ class SingleStreamWriter extends Writer {
 
     result.writeln('abstract class _${action}StreamOrigin {'
         ' String get errorMessage;'
-        ' ${executor} = ${executor.type}();'
+        ' ${executor.privateDeclaration} = ${executor.type}();'
+        ' int _callOrder;'
+        ' bool _onlyNewestCall;'
+        ' _${action}StreamOrigin() {'
+        '   _callOrder = 0;'
+        '   _onlyNewestCall = false;'
+        ' }'
+        ' set onlyNewestCall(onlyNewestCall) => _onlyNewestCall = onlyNewestCall;'
+        ''
         ' Stream<StreamState> process(${paramsTypeString} params) async* {'
+        '   _callOrder++;'
+        '   int callOrder = _callOrder;'
         '   try {'
         '     yield const ${action}Start();'
-        '     ${hasResults ? '${action}Results results =' : ''}await ${executor.name}.$method(${hasParams ? 'params' : ''});'
+        '     ${hasResults ? '${action}Results results =' : ''}await ${executor.privateName}.$method(${hasParams ? 'params' : ''});'
+        '     if (_onlyNewestCall && callOrder != _callOrder) return;'
         '     yield ${action}Succeed(${hasResults ? 'results' : ''});'
         '   } catch (error) {'
         '     ErrorLocation location = ErrorLocation(this.runtimeType, errorMessage);'
@@ -50,6 +61,23 @@ class SingleStreamWriter extends Writer {
     result.writeln('class ${action}Error extends StreamError {'
         ' ${action}Error(ErrorLocation location, dynamic error, dynamic payload)'
         '     : super.init(location, error, payload);'
+        '}');
+  }
+
+  @override
+  void writeBloc(StringBuffer result) {
+    final renamedClassName = StringUtils().capitalizeOnlyFirstLetter(action);
+
+    result.writeln('class ${action}Bloc implements StreamBloc{'
+        ' ${action}Stream _${renamedClassName}Stream;'
+        ' TransformerSubject<${paramsTypeString}, StreamState> ${renamedClassName}Subject;'
+        ' ${action}Bloc() {'
+        '   _${renamedClassName}Stream = ${action}Stream();'
+        '   ${renamedClassName}Subject = TransformerSubject<${paramsTypeString}, StreamState>(_${renamedClassName}Stream.process);'
+        ' }'
+        ' set onlyNewestCall(onlyNewestCall) => _${renamedClassName}Stream.onlyNewestCall = onlyNewestCall;'
+        ' @override'
+        ' dispose() => ${renamedClassName}Subject.dispose();'
         '}');
   }
 }

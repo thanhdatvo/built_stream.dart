@@ -99,7 +99,7 @@ class StreamResult {
 ///
 /// ```
 /// class LoginError extends StreamError {
-///  LoginError(ErrorLocation location, Error error, payload)
+///  LoginError(ErrorLocation location, dynamic error, payload)
 ///      : super.init(location, error, payload);
 ///}
 ///
